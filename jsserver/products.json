@@ -1,0 +1,30 @@
+{
+	"1":{
+		"id": 1,
+		"nom": "Boîtier de pédalier TANGE",
+		"image":"http://www.beastybike.com/5906-atmn_large/boitier-pedalier-tange.jpg",
+		"description": "Super léger, le top du boîtier",
+		"prix": 45.56
+	},
+	"2":{
+		"id": 2,
+		"nom": "Pédalier SHIMANO",
+		"image": "https://media2-synalabs-alltricks.turbobytes.net/medium/x031413g.jpg.pagespeed.ic.Ry50DkPMtw.jpg",
+		"description": "46 dents",
+		"prix": 75.45
+	},
+	"3":{
+		"id": 3,
+		"nom": "Tige de selle BLB TRACK",
+		"image":"http://www.beastybike.com/2257-atmn_large/tige-de-selle-blb-track.jpg",
+		"description": "avec intégration de LED lumineuses",
+		"prix": 110.99
+	},
+	"4":{
+		"id": 4,
+		"nom": "Guidon BLB",
+		"image": "https://www.santafixie.fr/media/catalog/product/cache/3/image/530x353/9df78eab33525d08d6e5fb8d27136e95/m/a/manillar-blb-carbono1.jpg",
+		"description": "Solide et léger",
+		"prix": 110.99
+	}
+}

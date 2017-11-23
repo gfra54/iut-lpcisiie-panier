@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>Panier</title>
+	<script src="https://unpkg.com/vue"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.js"></script>
+	<script src="components.js"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+	<div id="app">
+		<div class="produits">
+			<produit v-for="produit in produits" :produit="produit"></produit>
+		</div>
+		<div class="panier">
+			<h3>Panier</h3>
+			<div class="panier-contenu">
+				<panier-produit v-for="produit in panier" :produit="produit"></panier-produit>
+			</div>
+			<input type="button" v-on:click="commander" value="Commander">
+		</div>
+	</div>
+</body>
+</html>
+<script src="app.js"></script>
