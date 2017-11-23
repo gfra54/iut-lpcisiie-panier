@@ -1,31 +1,43 @@
 Vue.prototype.$http = axios
-var endpoint = 'http://www.sopress.local/panier/jsserver/public/';
+var endpoint = '../jsserver/public/';
 
 var app = new Vue({
-  el: '#app',
+    el: '#app',
 
-  created() {
-  	var vm = this;
-  	this.$http.get(endpoint+'products').then(function(response) {
-  		vm.produits = response.data
-  	});
-  	this.$http.get(endpoint+'cart').then(function(response) {
-  		vm.panier = response.data
-  	});
-  },
+    created() {
+        this.$http.get(endpoint + 'products').then(function(response) {
+            app.produits = response.data
+        });
+        this.$http.get(endpoint + 'cart').then(function(response) {
+            app.panier = response.data
+        });
+    },
 
-  methods: {
-  	commander: function() {
-  		for(cle in this.panier) {
-  			produit = this.panier[cle];
-  			
-  		}
-  	}
-  },
-
-  data: {
-  	produits	: [],
-  	panier		: []
-  }
+    methods: {
+        vider: function() {
+            app.$http.delete(endpoint + 'cart').then(function(response) {
+                app.panier = response.data
+            });
+        },
+        commander: function() {
+            var qte_produits = Object.keys(app.panier).length
+            for (var cle in app.panier) {
+                (function(cle) {
+                    app.$http.put(endpoint + 'cart/'+app.panier[cle].id+'/buy').then(function(response) {
+                        qte_produits--;
+                        app.panier[cle].ok=true;
+                        if(qte_produits == 0) {
+                            app.panierValide = true;
+                            console.log('Terminé !')
+                        }
+                    });
+                })(cle)
+            }
+        }
+    },
+    data: {
+        produits: [],
+        panier: [],
+        panierValide:false
+    }
 });
-

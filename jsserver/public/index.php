@@ -36,14 +36,21 @@ $app->group('/cart', function() use($app, $products){
 		echo $cart;
 	});
 
+	// sans arguments mais delete: on vide le panier
+	$app->delete('', function() {
+		echo json_encode($_SESSION['cart']=array());
+	});
+
 	// si on reçoit un identifiant produit, on l'ajoute au panier
 	$app->post('/{pid}', function(Slim\Http\Request $request, Slim\Http\Response $response) use($products){
 		$pid = $request->getAttribute('pid');
 		if(!empty($pid) && isset($products[$pid])){
 			$current = $_SESSION['cart'];
 			if( ! isset($current[$pid]) ){
+				$current[$pid]['id'] = $products[$pid]['id'];
 				$current[$pid]['nom'] = $products[$pid]['nom'];
 				$current[$pid]['qte'] = 0;
+				$current[$pid]['ok'] = false;
 				$current[$pid]['prix'] = 0;
 			}
 

@@ -35,7 +35,7 @@ Vue.component('produit-image',{
 Vue.component('panier-produit',{
 	props		: ['produit'],
 	template	: 
-	`<div class="panier-produit">
+	`<div class="panier-produit" v-bind:class="{ 'produit-ok': produit.ok }"  :data-id="produit.id">
 		<b>{{ produit.nom }}</b> x {{ produit.qte }} &middot; {{ produit.prix }}€
 	</div>`
 });

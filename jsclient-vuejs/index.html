@@ -12,14 +12,15 @@
 
 	<div id="app">
 		<div class="produits">
-			<produit v-for="produit in produits" :produit="produit"></produit>
+			<produit v-for="produit in produits" :key="produit.id" :produit="produit"></produit>
 		</div>
-		<div class="panier">
+		<div class="panier" v-bind:class="{ 'panier-ok': panierValide }">
 			<h3>Panier</h3>
 			<div class="panier-contenu">
-				<panier-produit v-for="produit in panier" :produit="produit"></panier-produit>
+				<panier-produit v-for="produit in panier" :key="produit.id" :produit="produit"></panier-produit>
 			</div>
 			<input type="button" v-on:click="commander" value="Commander">
+			<input type="button" v-on:click="vider" value="Vider le panier">
 		</div>
 	</div>
 </body>

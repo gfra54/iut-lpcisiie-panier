@@ -48,8 +48,17 @@ body {
     font-size: 75%;
 }
 
+.panier-contenu {
+    padding-bottom: 3px;
+    margin-bottom: 6px;
+    border-bottom: 1px dotted white;
+}
+
 .panier-produit {
 	border-top: 1px dotted white;
 	padding-top: 3px;
 	margin-top: 3px;
+}
+.panier-ok, .produit-ok {
+    background-color: green;
 }
